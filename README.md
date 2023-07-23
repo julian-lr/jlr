@@ -11,9 +11,8 @@ As of today, July 23rd, I'm focusing on HTML, CSS, and SCSS. Hopefully this will
 - Git
 
 (To be expanded...)
-  
-  
-  
+<br />
+<br />
 # ESP
 ## Introducción
 La idea de este proyecto es desarrollar un sitio web que actue como un curriculum secundario, mejorandolo a medida que voy progresando en el curso de Full Stack Development de CoderHouse.
