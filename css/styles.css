@@ -1,0 +1,75 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #212529;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+img, picture, video, canvas, svg {
+  max-width: 100%;
+}
+
+p, h1, h2, h3, h4, h5, h6 {
+  overflow-wrap: break-word;
+}
+
+/*====Fonts default para todos los elementos====*/
+* {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, Roboto, Oxygen, Ubuntu, "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+/*====Forzar font inherit en elementos particulares====*/
+input, button, textarea, select {
+  font: inherit;
+}
+
+/*
+=============
+MOBILE NAVBAR
+===============
+*/
+.navbar__div--hideformobile {
+  display: none;
+}
+.navbar__img {
+  width: 50px;
+}
+.navbar__li {
+  border-bottom: 1px solid #495057;
+}
+
+/*
+=============
+DESKTOP NAVBAR
+===============
+*/
+@media (min-width: 990px) {
+  /*===Desktop-specific adjustments===*/
+  .navbar {
+    padding: 5px 50px;
+    /*===li + img paddings===*/
+  }
+  .navbar__li {
+    padding: 0 5px;
+    border-bottom: none;
+  }
+  .navbar__img {
+    padding: 0 5px;
+    box-sizing: content-box;
+  }
+}
+
+/*# sourceMappingURL=styles.css.map */

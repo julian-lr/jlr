@@ -1,0 +1,21 @@
+//=================================
+//  Mixins
+//=================================
+
+//===================
+//font-family + font-weight
+//===================
+@mixin font-family-light {
+    font-family: -apple-system, Roboto, Oxygen, Ubuntu, 'Open Sans', 'Helvetica Neue', system-ui, 'Segoe UI', sans-serif;
+    font-weight: 200;
+}
+
+@mixin font-family-regular {
+    font-family: -apple-system, Roboto, Oxygen, Ubuntu, 'Open Sans', 'Helvetica Neue', system-ui, 'Segoe UI', sans-serif;
+    font-weight: 400;
+}
+
+@mixin font-family-bold {
+    font-family: -apple-system, Roboto, Oxygen, Ubuntu, 'Open Sans', 'Helvetica Neue', system-ui, 'Segoe UI', sans-serif;
+    font-weight: 700;
+}

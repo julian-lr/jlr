@@ -1,0 +1,45 @@
+//=================================
+//  HEADER/NAVIGATION BAR ADJUSTMENTS
+//=================================
+// The navbar is made with Boostrap but there will be some adjustments required for optimal functionality.
+
+// @use calls
+@use "../abstracts/" as *;
+
+/*
+=============
+MOBILE NAVBAR
+===============
+*/
+.navbar {
+  &__div--hideformobile {
+    display: none;
+  }
+  &__img {
+    width: 50px;
+  }
+  &__li {
+    border-bottom: 1px solid $outer-space;
+  }
+}
+
+/*
+=============
+DESKTOP NAVBAR
+===============
+*/
+@media (min-width: 990px) {
+  /*===Desktop-specific adjustments===*/
+  .navbar {
+    padding: 5px 50px;
+    /*===li + img paddings===*/
+    &__li {
+      padding: 0 5px;
+      border-bottom: none;
+    }
+    &__img {
+      padding: 0 5px;
+      box-sizing: content-box;
+    }
+  }
+}
