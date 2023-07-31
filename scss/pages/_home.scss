@@ -8,23 +8,35 @@
 // @include calls for keyframes
 @include keyframe-slide-up;
 
-/*=============
-MOBILE VERSION
-===============*/
+//=============
+//MOBILE VERSION
+//===============
+
+//Fix for pagepiling display
+.section {
+  .pp-tableCell {
+    display: block;
+  }
+}
+
 .introcontent {
-    padding: 15px 0;
-    &__h1 {
+  &__h1 {
     text-align: center;
     padding: 15px 0 0 0;
     font-size: 2em;
+    font-weight: 700;
   }
   &__h2 {
     text-align: center;
     font-size: 1.25em;
     padding: 0 0 15px 0;
+    font-weight: 300;
   }
   &__arrowdown {
     padding: 80px 0 0 0;
     @include animation-slide-up;
+  }
+  &__img {
+    border-radius: 50%;
   }
 }
