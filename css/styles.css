@@ -2,6 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  color: #f8f9fa;
 }
 
 body {
@@ -36,26 +37,22 @@ input, button, textarea, select {
   font: inherit;
 }
 
-/*
-=============
+/*=============
 MOBILE NAVBAR
-===============
-*/
+===============*/
 .navbar__div--hideformobile {
   display: none;
 }
 .navbar__img {
-  width: 50px;
+  width: 40px;
 }
 .navbar__li {
   border-bottom: 1px solid #495057;
 }
 
-/*
-=============
+/*=============
 DESKTOP NAVBAR
-===============
-*/
+===============*/
 @media (min-width: 990px) {
   /*===Desktop-specific adjustments===*/
   .navbar {
@@ -70,6 +67,38 @@ DESKTOP NAVBAR
     padding: 0 5px;
     box-sizing: content-box;
   }
+}
+@keyframes slideUp {
+  0% {
+    transform: translateY(75%);
+  }
+  75% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(75%);
+  }
+}
+/*=============
+MOBILE VERSION
+===============*/
+.introcontent {
+  padding: 15px 0;
+}
+.introcontent__h1 {
+  text-align: center;
+  padding: 15px 0 0 0;
+  font-size: 2em;
+}
+.introcontent__h2 {
+  text-align: center;
+  font-size: 1.25em;
+  padding: 0 0 15px 0;
+}
+.introcontent__arrowdown {
+  padding: 80px 0 0 0;
+  animation: 1.5s ease-in 0s 1 slideUp;
+  animation-iteration-count: infinite;
 }
 
 /*# sourceMappingURL=styles.css.map */

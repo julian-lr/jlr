@@ -6,28 +6,24 @@
 // @use calls
 @use "../abstracts/" as *;
 
-/*
-=============
+/*=============
 MOBILE NAVBAR
-===============
-*/
+===============*/
 .navbar {
   &__div--hideformobile {
     display: none;
   }
   &__img {
-    width: 50px;
+    width: 40px;
   }
   &__li {
     border-bottom: 1px solid $outer-space;
   }
 }
 
-/*
-=============
+/*=============
 DESKTOP NAVBAR
-===============
-*/
+===============*/
 @media (min-width: 990px) {
   /*===Desktop-specific adjustments===*/
   .navbar {
