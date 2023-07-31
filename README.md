@@ -10,7 +10,7 @@ As of today, July 23rd, I'm focusing on HTML, CSS, and SCSS. Hopefully this will
 - Adobe XD
 - Git
 - Bootstrap
-- pagePiling (Maybe)
+- pagePiling+jQuery
 
 (To be expanded...)
 <br />
@@ -27,6 +27,6 @@ A día de hoy, 23 de Julio, estoy enfocandome en HTML, CSS y SCSS. Espero que es
 - Adobe XD
 - Git
 - Bootstrap
-- pagePiling (Quizás)
+- pagePiling+jQuery
 
 (A ser expandido...)
