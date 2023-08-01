@@ -1,3 +1,6 @@
 # .gitignore file
 # Ignore node_modules and its child directories
 node_modules/
+
+# Ignore jsindex.html as it is a testing ground.
+jsindex.html
