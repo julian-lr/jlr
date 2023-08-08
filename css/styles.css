@@ -49,14 +49,56 @@ select {
 /*=============
 MOBILE NAVBAR
 ===============*/
+.navbar {
+  padding-top: 15px;
+}
 .navbar__div--hideformobile {
   display: none;
 }
 .navbar__img {
-  width: 40px;
+  width: 50px;
 }
 .navbar__li {
-  border-bottom: 1px solid #495057;
+  border-bottom: 1px solid #ced4da;
+}
+.navbar__toggler {
+  width: 35px;
+  height: 20px;
+  position: relative;
+}
+.navbar__toggler, .navbar__toggler:focus, .navbar__toggler:active, .navbar__togglericon:focus {
+  outline: none;
+  box-shadow: none;
+  border: 0;
+  position: relative;
+}
+.navbar__togglericon {
+  margin: 0;
+  padding: 0;
+  display: block;
+  position: absolute;
+  height: 3px;
+  width: 100%;
+  background: linear-gradient(90deg, #ffffff 0%, #e9ecef 35%, #ced4da 100%);
+  border-radius: 1px;
+  opacity: 1;
+  left: 0;
+  transform: rotate(0deg);
+  transition: 0.25s ease-in-out;
+}
+.navbar .top__bar {
+  position: absolute;
+  top: 0px;
+  transform: rotate(0deg);
+}
+.navbar .mid__bar {
+  margin-top: 0px;
+  top: 10px;
+}
+.navbar .bot__bar {
+  position: absolute;
+  top: 20px;
+  transform: rotate(0deg);
 }
 
 /*=============
@@ -111,6 +153,14 @@ DESKTOP NAVBAR
 }
 .introcontent__img {
   border-radius: 50%;
+}
+
+@media (min-height: 800px) {
+  .introcontent__arrowdown {
+    padding: 160px 0 0 0;
+    animation: 1.5s ease-in 0s 1 slideUp;
+    animation-iteration-count: infinite;
+  }
 }
 
 /*# sourceMappingURL=styles.css.map */

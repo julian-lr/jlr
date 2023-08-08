@@ -10,14 +10,79 @@
 MOBILE NAVBAR
 ===============*/
 .navbar {
+  //Additional top padding for the navbar
+  padding-top: 15px;
+
+  //Hiding part of the navbar which is intended for desktop view only.
   &__div--hideformobile {
     display: none;
   }
+
+  //Adjusting image
   &__img {
-    width: 40px;
+    width: 50px;
   }
+
+  //Border bottom for the navbar LIs in mobile view only
   &__li {
-    border-bottom: 1px solid $outer-space;
+    border-bottom: 1px solid $french-grey;
+  }
+
+  //Start of custom design of the toggler on mobile.
+  //Fixed size and relative positioning of the toggler
+  &__toggler {
+    width: 35px;
+    height: 20px;
+    position: relative;
+  }
+
+  //Removing border, outline, and shadow on the toggler and its different states, also reinforces the position relative.
+  &__toggler,
+  &__toggler:focus,
+  &__toggler:active,
+  &__togglericon:focus {
+    outline: none;
+    box-shadow: none;
+    border: 0;
+    position: relative;
+  }
+
+  //Design of the toggler icon, this is meant as an override of Bootstrap's default button.
+  &__togglericon {
+    margin: 0;
+    padding: 0;
+    display: block;
+    position: absolute;
+    height: 3px;
+    width: 100%;
+    background: linear-gradient(
+      90deg,
+      $true-white 0%,
+      $antiflash-white 35%,
+      $french-grey 100%
+    );
+    border-radius: 1px;
+    opacity: 1;
+    left: 0;
+    transform: rotate(0deg);
+    transition: 0.25s ease-in-out;
+  }
+
+  .top__bar {
+    position: absolute;
+    top: 0px;
+    transform: rotate(0deg);
+  }
+
+  .mid__bar {
+    margin-top: 0px;
+    top: 10px;
+  }
+
+  .bot__bar {
+    position: absolute;
+    top: 20px;
+    transform: rotate(0deg);
   }
 }
 
