@@ -7,7 +7,6 @@ As of today, July 23rd, I'm focusing on HTML, CSS, and SCSS. Hopefully this will
 - HTML
 - CSS
 - SCSS
-- Adobe XD
 - Git
 - Bootstrap
 - pagePiling+jQuery (This will later be replaced with AngularJS/ReactJS once I learn it)
@@ -24,7 +23,6 @@ A día de hoy, 23 de Julio, estoy enfocandome en HTML, CSS y SCSS. Espero que es
 - HTML
 - CSS
 - SCSS
-- Adobe XD
 - Git
 - Bootstrap
 - pagePiling+jQuery (Esto será reemplazado por AngularJS y/o ReactJS una vez que los aprenda)
