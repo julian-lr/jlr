@@ -4,14 +4,21 @@
 // The navbar is made with Boostrap but there will be some adjustments required for optimal functionality.
 
 // @use calls
-@use "../abstracts/" as *;
+@use '../abstracts/' as *;
 
 /*=============
 MOBILE NAVBAR
 ===============*/
+//Placing the navbar on top of the pagePiling sections
+header {
+  position: relative;
+  z-index: 5;
+  background-color: $khaki;
+}
+
 .navbar {
-  //Additional top padding for the navbar
-  padding-top: 15px;
+  //Additional padding for the navbar
+  padding: 15px 0;
 
   //Hiding part of the navbar which is intended for desktop view only.
   &__div--hideformobile {
@@ -21,11 +28,28 @@ MOBILE NAVBAR
   //Adjusting image
   &__img {
     width: 50px;
+    filter: invert(100%);
   }
 
   //Border bottom for the navbar LIs in mobile view only
   &__li {
     border-bottom: 1px solid $french-grey;
+
+    // Overriding bootstrap default colors to my palette
+    a {
+      color: $onyx;
+    }
+    a:hover {
+      color: $full-black;
+    }
+    .nav-link.active {
+      color: $full-black;
+    }
+  }
+
+  // Added padding to the collapsed menu
+  &__collapse {
+    padding-top: 10px;
   }
 
   //Start of custom design of the toggler on mobile.
@@ -47,7 +71,7 @@ MOBILE NAVBAR
     position: relative;
   }
 
-  //Design of the toggler icon, this is meant as an override of Bootstrap's default button.
+  //Design of the toggler icon, this is meant as an override of Bootstrap's default button, hopefully it will be an X to close soon.
   &__togglericon {
     margin: 0;
     padding: 0;
@@ -55,12 +79,7 @@ MOBILE NAVBAR
     position: absolute;
     height: 3px;
     width: 100%;
-    background: linear-gradient(
-      90deg,
-      $true-white 0%,
-      $antiflash-white 35%,
-      $french-grey 100%
-    );
+    background: linear-gradient(90deg, $onyx 0%, $eerie-black 100%);
     border-radius: 1px;
     opacity: 1;
     left: 0;
@@ -92,7 +111,7 @@ DESKTOP NAVBAR
 @media (min-width: 990px) {
   /*===Desktop-specific adjustments===*/
   .navbar {
-    padding: 5px 50px;
+    padding: 5px 50px 15px 50px;
     /*===li + img paddings===*/
     &__li {
       padding: 0 5px;

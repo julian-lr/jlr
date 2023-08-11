@@ -1,16 +1,18 @@
 @use "../abstracts/" as *;
 
+// This is the reset, there's not much to say about it.
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  color: $seasalt;
-  font-family: Lato, system-ui, -apple-system, BlinkMacSystemFont, Roboto,
+  color: $eerie-black;
+  font-family: Lato, SF Pro, system-ui, -apple-system, BlinkMacSystemFont, Roboto,
     Oxygen, Ubuntu, "Open Sans", "Helvetica Neue", sans-serif;
 }
 
 body {
-  background-color: $umber;
+  background-color: $rose-ebony;
   height: 100vh;
 }
 
@@ -40,6 +42,7 @@ h4,
 h5,
 h6 {
   overflow-wrap: break-word;
+  color: inherit;
 }
 
 input,
