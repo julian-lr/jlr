@@ -1,0 +1,46 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 100%;
+}
+
+body {
+    font-family: 'PlayfairDisplay', serif;
+    background-color: #1B1B1B;
+    color: #FBFAF5;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'PlayfairDisplay', serif;
+}
+
+h1 {
+    font-weight: 700;
+}
+
+p {
+    font-weight: 400;
+}
+
+ul, ol {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+
+    :hover {
+        text-decoration: none;
+    }
+}
+
+button {
+    border: none;
+    background: none;
+    cursor: pointer;
+}
