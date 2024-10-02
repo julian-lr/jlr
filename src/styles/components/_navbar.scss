@@ -1,7 +1,7 @@
 @use '../utils/mixins';
 
 nav {
-    background-color: mixins.$navbar-bg-color;
+    background-color: transparent;
     padding: 1rem;
 
     ul {
