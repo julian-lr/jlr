@@ -1,5 +1,7 @@
+@use '../utils/mixins';
+
 nav {
-    background-color: $navbar-bg-color;
+    background-color: mixins.$navbar-bg-color;
     padding: 1rem;
 
     ul {
@@ -14,7 +16,7 @@ nav {
             margin-right: 1rem;
             vertical-align: middle;
             .nav-logo {
-                color: $navbar-link-color;
+                color: mixins.$navbar-link-color;
                 text-decoration: none;
                 font-weight: 700;
                 font-size: 16px;
@@ -27,12 +29,12 @@ nav {
                 margin-left: 1rem;
 
                 a {
-                    color: $navbar-link-color;
+                    color: mixins.$navbar-link-color;
                     text-decoration: none;
 
                     &:hover {
                         text-decoration: underline;
-                        color: $navbar-link-hover-color;
+                        color: mixins.$navbar-link-hover-color;
                     }
                 }
             }

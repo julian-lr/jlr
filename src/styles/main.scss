@@ -1,7 +1,4 @@
-@import 'base/typography';
-@import 'utils/mixins';
-
-@import 'base/reset';
-
-@import 'components/navbar';
-@import 'components/footer';
+@use 'utils';
+@use 'base';
+@use 'components';
+@use 'pages';
