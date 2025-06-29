@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import styles from './Navbar.module.scss'
 
+// Navigation links for the navbar. Each id should match a section in the page.
 const links = [
   { name: 'Home', id: 'home' },
   { name: 'About me', id: 'aboutme' },
@@ -10,6 +11,7 @@ const links = [
   { name: 'Contact', id: 'contact' },
 ]
 
+// SVG icon for sun (light mode)
 function SunIcon() {
   return (
     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
@@ -28,6 +30,7 @@ function SunIcon() {
   )
 }
 
+// SVG icon for moon (dark mode)
 function MoonIcon() {
   return (
     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
@@ -37,19 +40,25 @@ function MoonIcon() {
 }
 
 function Navbar() {
+  // Track which link is active (for highlight)
   const [active, setActive] = useState('home')
+  // Track if the mobile menu is open
   const [open, setOpen] = useState(false)
+  // Track the current theme (light/dark)
   const [theme, setTheme] = useState<'light' | 'dark'>(() => {
+    // On first render, check the current data-theme or default to light
     if (typeof window !== 'undefined') {
       return (document.documentElement.getAttribute('data-theme') as 'dark' | 'light') || 'light';
     }
     return 'light';
   });
 
+  // Update the data-theme attribute on the <html> element when theme changes
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', theme)
   }, [theme])
 
+  // Handle link click: set active, close mobile menu, scroll to section
   const handleClick = (id: string) => {
     setActive(id)
     setOpen(false)
@@ -59,14 +68,17 @@ function Navbar() {
     }
   }
 
+  // Toggle between light and dark mode
   const toggleTheme = () => {
     setTheme((prev) => (prev === 'light' ? 'dark' : 'light'))
   }
 
   return (
     <nav className={styles.navbar}>
+      {/* Navbar content: logo, burger, desktop links, theme toggle */}
       <div className={styles.navbarContent}>
         <span className={styles.logo}>JLR</span>
+        {/* Burger menu button for mobile */}
         <button
           className={open ? styles.burger + ' ' + styles.burgerOpen : styles.burger}
           aria-label={open ? 'Close menu' : 'Open menu'}
@@ -77,10 +89,11 @@ function Navbar() {
           <span className={styles.burgerBar}></span>
           <span className={styles.burgerBar}></span>
         </button>
-        {/* Desktop menu */}
+        {/* Desktop menu: links and dividers, theme toggle at end */}
         <div className={styles.linksDesktop}>
           {links.map((link, idx) => (
             <>
+              {/* Nav link */}
               <span
                 key={link.id}
                 className={
@@ -92,11 +105,13 @@ function Navbar() {
               >
                 <span className={styles.linkText}>{link.name}</span>
               </span>
+              {/* Divider between links, not after last */}
               {idx < links.length - 1 && (
                 <span key={'divider-' + idx} className={styles.divider}>|</span>
               )}
             </>
           ))}
+          {/* Theme toggle button (SVG icon) */}
           <button
             className={styles.themeToggle}
             aria-label={theme === 'light' ? 'Switch to dark mode' : 'Switch to light mode'}
@@ -107,7 +122,7 @@ function Navbar() {
           </button>
         </div>
       </div>
-      {/* Mobile menu outside navbarContent */}
+      {/* Mobile menu: links stacked, theme toggle centered below */}
       <div className={open ? styles.linksMobileOpen : styles.linksMobile}>
         {links.map((link) => (
           <span
@@ -122,6 +137,7 @@ function Navbar() {
             <span className={styles.linkText}>{link.name}</span>
           </span>
         ))}
+        {/* Theme toggle centered in mobile menu */}
         <button
           className={styles.themeToggle}
           aria-label={theme === 'light' ? 'Switch to dark mode' : 'Switch to light mode'}

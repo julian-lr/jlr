@@ -1,3 +1,4 @@
+// Navbar styles: fixed, responsive, uses CSS variables for color
 .navbar {
   position: fixed;
   top: 0;
@@ -13,6 +14,7 @@
   flex-direction: column;
 }
 
+// Main navbar content: logo, links, burger, theme toggle
 .navbarContent {
   width: 100%;
   display: flex;
@@ -24,12 +26,14 @@
   z-index: 2;
 }
 
+// Logo styling
 .logo {
   font-size: 1.2rem;
   color: var(--color-navbar-text);
   font-weight: bold;
 }
 
+// Burger menu button (mobile only)
 .burger {
   display: flex;
   flex-direction: column;
@@ -47,6 +51,7 @@
   outline: none;
 }
 
+// Burger icon bars
 .burgerBar {
   width: 26px;
   height: 3px;
@@ -56,6 +61,7 @@
   transition: 0.3s;
 }
 
+// Burger open/close animation
 .burgerOpen .burgerBar:nth-child(1) {
   transform: translateY(6px) rotate(45deg);
 }
@@ -66,6 +72,7 @@
   transform: translateY(-6px) rotate(-45deg);
 }
 
+// Mobile menu styles (slide down, full width)
 .linksMobile,
 .linksMobileOpen {
   position: fixed;
@@ -84,7 +91,7 @@
   transform: translateY(-20px);
   transition: opacity 0.3s, transform 0.3s;
   display: flex;
-  align-items: center;
+  align-items: center; // Center theme toggle in mobile
 }
 .linksMobileOpen {
   opacity: 1;
@@ -92,15 +99,18 @@
   transform: translateY(0);
 }
 
+// Desktop menu hidden on mobile
 .linksDesktop {
   display: none;
 }
 
+// Nav link wrapper (for future use)
 .linkWrapper {
   display: flex;
   align-items: center;
 }
 
+// Nav link styling
 .link {
   cursor: pointer;
   color: var(--color-navbar-link);
@@ -117,16 +127,17 @@
   outline: none;
 }
 
+// Link hover/active states
 .link:not(.active):hover .linkText {
   color: var(--color-navbar-link-hover);
   background: none;
 }
-
 .active .linkText {
   color: var(--color-navbar-link-active);
   background: none;
 }
 
+// Divider between links (desktop only)
 .divider {
   color: var(--color-navbar-divider);
   font-weight: bold;
@@ -135,6 +146,7 @@
   font-size: 1rem;
 }
 
+// Theme toggle button (SVG icon, size, color)
 .themeToggle {
   max-width: 320px;
   min-width: 40px;
@@ -153,15 +165,14 @@
   color: #111;
   transition: color 0.2s;
 }
-
 [data-theme="dark"] .themeToggle {
   color: #fff;
 }
-
 .themeToggle:focus {
   outline: 2px solid var(--color-navbar-link-hover);
 }
 
+// Desktop styles
 @media (min-width: 880px) {
   .burger {
     display: none;
@@ -187,5 +198,8 @@
   }
   .divider {
     font-size: 1.05rem;
+  }
+  .themeToggle {
+    margin-left: 0.5rem;
   }
 }
