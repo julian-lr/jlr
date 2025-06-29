@@ -1,4 +1,4 @@
-# JLR SPA - Changelog
+# JLR
 
 ## Changelog
 
