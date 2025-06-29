@@ -84,6 +84,7 @@
   transform: translateY(-20px);
   transition: opacity 0.3s, transform 0.3s;
   display: flex;
+  align-items: center;
 }
 .linksMobileOpen {
   opacity: 1;
@@ -132,6 +133,33 @@
   user-select: none;
   margin: 0 0.25rem;
   font-size: 1rem;
+}
+
+.themeToggle {
+  max-width: 320px;
+  min-width: 40px;
+  min-height: 40px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 1.4rem;
+  padding: 0;
+  margin-left: 0.5rem;
+  color: #111;
+  transition: color 0.2s;
+}
+
+[data-theme="dark"] .themeToggle {
+  color: #fff;
+}
+
+.themeToggle:focus {
+  outline: 2px solid var(--color-navbar-link-hover);
 }
 
 @media (min-width: 880px) {
