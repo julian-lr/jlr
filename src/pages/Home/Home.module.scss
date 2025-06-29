@@ -1,3 +1,88 @@
+// Home page main container: full width/height, centers content
 .home {
-  /* Add styles for the Home section here */
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+// Flex layout for image and info
+.hero {
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+  flex-wrap: wrap;
+}
+
+// Wrapper for circular profile image
+.photoWrapper {
+  width: 180px;
+  height: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+// Profile image: 1:1 aspect, perfectly round
+.photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 1px solid var(--color-navbar-divider);
+  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+  background: #eee;
+}
+
+// Info section: name and roles, centered
+.info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+// Name styling
+.name {
+  font-size: 2.2rem;
+  margin-bottom: 1rem;
+  font-family: inherit;
+}
+
+// Highlight for last names (color changes with theme)
+.highlight {
+  color: #535bf2;
+}
+[data-theme="dark"] .highlight {
+  color: var(--color-navbar-link-active, #fff);
+}
+
+// Roles: concise, centered, with dots
+.roles {
+  display: flex;
+  gap: 0.5rem;
+  font-size: 1.15rem;
+  font-weight: 500;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+// Responsive adjustments for mobile
+@media (max-width: 600px) {
+  .hero {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  .info {
+    align-items: center;
+  }
+  .name {
+    font-size: 1.5rem;
+  }
+  .photoWrapper {
+    width: 120px;
+    height: 120px;
+  }
 }

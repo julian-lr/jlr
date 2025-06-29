@@ -72,7 +72,7 @@
   transform: translateY(-6px) rotate(-45deg);
 }
 
-// Mobile menu styles (slide down, full width)
+// Mobile menu styles (slide down, full width, more opaque background)
 .linksMobile,
 .linksMobileOpen {
   position: fixed;
@@ -80,7 +80,7 @@
   top: 56px;
   width: 100%;
   min-height: calc(100vh - 56px);
-  background: var(--color-navbar-bg);
+  background: rgba(17, 17, 17, 0.97); // More opaque for dark mode
   box-shadow: 0 2px 8px rgba(0,0,0,0.04);
   padding: 1.5rem 0;
   gap: 1rem;
@@ -97,6 +97,10 @@
   opacity: 1;
   pointer-events: auto;
   transform: translateY(0);
+}
+[data-theme="light"] .linksMobile,
+[data-theme="light"] .linksMobileOpen {
+  background: rgba(255, 255, 255, 0.97); // More opaque for light mode
 }
 
 // Desktop menu hidden on mobile
