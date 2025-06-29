@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import styles from './navbar.module.scss'
+import styles from './Navbar.module.scss'
 
 const links = [
   { name: 'Home', id: 'home' },
@@ -40,21 +40,22 @@ function Navbar() {
         {/* Desktop menu */}
         <div className={styles.linksDesktop}>
           {links.map((link, idx) => (
-            <span key={link.id} className={styles.linkWrapper}>
-              <span
-                className={
-                  styles.link +
-                  (active === link.id ? ' ' + styles.active : '')
-                }
-                onClick={() => handleClick(link.id)}
-                onMouseDown={e => e.preventDefault()}
-              >
-                <span className={styles.linkText}>{link.name}</span>
-              </span>
-              {idx < links.length - 1 && (
-                <span className={styles.divider}>|</span>
-              )}
+            <span
+              key={link.id}
+              className={
+                styles.link +
+                (active === link.id ? ' ' + styles.active : '')
+              }
+              onClick={() => handleClick(link.id)}
+              onMouseDown={e => e.preventDefault()}
+            >
+              <span className={styles.linkText}>{link.name}</span>
             </span>
+          ))}
+          {links.map((_, idx) => (
+            idx < links.length - 1 && (
+              <span key={'divider-' + idx} className={styles.divider}>|</span>
+            )
           ))}
         </div>
       </div>
