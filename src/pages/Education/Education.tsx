@@ -3,7 +3,7 @@ import styles from './Education.module.scss'
 function Education() {
   return (
     <section className={styles.education}>
-      <h1>Education</h1>
+      <h2>Education</h2>
       <p>This is the Education section.</p>
     </section>
   )

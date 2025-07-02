@@ -1,6 +1,167 @@
-/* Removed the placeholder class and comment from WorkExperience.module.scss */
-
 .workExperience {
   width: 100%;
   min-height: 100vh;
+  padding-top: 140px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.workExperience h2 {
+  margin-top: 0;
+}
+
+.timeline {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3.5rem;
+  width: 100%;
+  max-width: 700px;
+  margin-top: 0;
+  padding-top: 38px; // Add space for the start dot
+}
+
+/* Start dot at the top of the timeline */
+.timeline-start-dot {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: 18px;
+  height: 18px;
+  background: var(--color-bg, #fff);
+  border: 3px solid var(--color-navbar-link-active, #535bf2);
+  border-radius: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: var(--color-navbar-divider, #ccc);
+  border-radius: 2px;
+  transform: translateX(-50%);
+  z-index: 0;
+}
+
+.company {
+  position: relative;
+  background: var(--color-bg, #fff);
+  border-radius: 0;
+  padding: 1.2rem 1.2rem 1.2rem 1.2rem;
+  box-shadow: none;
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 1;
+}
+
+.company:last-of-type {
+  padding-bottom: 70px;
+}
+
+.company h3 {
+  font-size: 1.3rem;
+  margin: 0 0 0.2rem 0;
+  color: var(--color-navbar-link-active);
+  text-align: center;
+}
+
+.duration {
+  font-size: 0.98rem;
+  color: var(--color-text);
+  opacity: 0.7;
+  margin-bottom: 0.7rem;
+  display: block;
+  text-align: center;
+}
+
+.role {
+  margin-top: 1.1rem;
+  width: 100%;
+}
+
+.role h4 {
+  font-size: 1.08rem;
+  margin: 0 0 0.1rem 0;
+  font-weight: 600;
+  color: var(--color-navbar-link);
+  text-align: center;
+}
+
+.dates {
+  font-size: 0.95rem;
+  color: var(--color-text);
+  opacity: 0.7;
+  margin-bottom: 0.4rem;
+  display: block;
+  text-align: center;
+}
+
+ul {
+  margin: 0 0 0.7rem 0;
+  padding: 0;
+  list-style: none;
+}
+
+li {
+  font-size: 0.98rem;
+  margin-bottom: 0.2rem;
+}
+
+/* Timeline dot for each company, centered on the line */
+.company::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: -28px;
+  width: 18px;
+  height: 18px;
+  background: var(--color-bg, #fff);
+  border: 3px solid var(--color-navbar-link-active, #535bf2);
+  border-radius: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+}
+
+@media (max-width: 600px) {
+  .workExperience {
+    padding-top: 200px;
+    padding-bottom: 60px;
+  }
+  .timeline {
+    gap: 2.2rem;
+    max-width: 98vw;
+    padding-top: 25px; // Adjust for smaller dot
+  }
+  .company {
+    max-width: 98vw;
+  }
+  .company::before {
+    width: 13px;
+    height: 13px;
+    top: -18px;
+  }
+  .company h3 {
+    font-size: 1.08rem;
+  }
+  .role h4 {
+    font-size: 0.98rem;
+  }
+  ul {
+    margin-left: 0.7rem;
+  }
+  .timeline-start-dot {
+    width: 13px;
+    height: 13px;
+    top: 0;
+  }
 }

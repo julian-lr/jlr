@@ -1,10 +1,11 @@
 // Home page main container: full width/height, centers content
 .home {
   width: 100%;
-  min-height: 100vh;
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
+  transform: translateY(-60px); // reduced upward shift
 }
 
 // Flex layout for image and info

@@ -1,15 +1,11 @@
-import { useState, useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import styles from './Navbar.module.scss'
 
-// Navigation links for the navbar. Each id should match a section in the page.
-const links = [
-  { name: 'Home', id: 'home' },
-  { name: 'About me', id: 'aboutme' },
-  { name: 'Work experience', id: 'workexperience' },
-  { name: 'Education', id: 'education' },
-  { name: 'Courses', id: 'courses' },
-  { name: 'Contact', id: 'contact' },
-]
+interface NavbarProps {
+  current: number;
+  setCurrent: (idx: number) => void;
+  sections: { id: string; name: string }[];
+}
 
 // SVG icon for sun (light mode)
 function SunIcon() {
@@ -39,9 +35,7 @@ function MoonIcon() {
   )
 }
 
-function Navbar() {
-  // Track which link is active (for highlight)
-  const [active, setActive] = useState('home')
+function Navbar({ current, setCurrent, sections }: NavbarProps) {
   // Track if the mobile menu is open
   const [open, setOpen] = useState(false)
   // Track the current theme (light/dark)
@@ -58,14 +52,10 @@ function Navbar() {
     document.documentElement.setAttribute('data-theme', theme)
   }, [theme])
 
-  // Handle link click: set active, close mobile menu, scroll to section
-  const handleClick = (id: string) => {
-    setActive(id)
+  // Handle link click: set current section, close mobile menu
+  const handleClick = (idx: number) => {
+    setCurrent(idx)
     setOpen(false)
-    const section = document.getElementById(id)
-    if (section) {
-      section.scrollIntoView({ behavior: 'smooth' })
-    }
   }
 
   // Toggle between light and dark mode
@@ -91,22 +81,22 @@ function Navbar() {
         </button>
         {/* Desktop menu: links and dividers, theme toggle at end */}
         <div className={styles.linksDesktop}>
-          {links.map((link, idx) => (
+          {sections.map((link, idx) => (
             <>
               {/* Nav link */}
               <span
                 key={link.id}
                 className={
                   styles.link +
-                  (active === link.id ? ' ' + styles.active : '')
+                  (current === idx ? ' ' + styles.active : '')
                 }
-                onClick={() => handleClick(link.id)}
+                onClick={() => handleClick(idx)}
                 onMouseDown={e => e.preventDefault()}
               >
                 <span className={styles.linkText}>{link.name}</span>
               </span>
               {/* Divider between links, not after last */}
-              {idx < links.length - 1 && (
+              {idx < sections.length - 1 && (
                 <span key={'divider-' + idx} className={styles.divider}>|</span>
               )}
             </>
@@ -124,14 +114,14 @@ function Navbar() {
       </div>
       {/* Mobile menu: links stacked, theme toggle centered below */}
       <div className={open ? styles.linksMobileOpen : styles.linksMobile}>
-        {links.map((link) => (
+        {sections.map((link, idx) => (
           <span
             key={link.id}
             className={
               styles.link +
-              (active === link.id ? ' ' + styles.active : '')
+              (current === idx ? ' ' + styles.active : '')
             }
-            onClick={() => handleClick(link.id)}
+            onClick={() => handleClick(idx)}
             onMouseDown={e => e.preventDefault()}
           >
             <span className={styles.linkText}>{link.name}</span>

@@ -24,7 +24,7 @@ function Home() {
           <div className={styles.roles}>
             <span>QA</span>
             <span> • </span>
-            <span>Salesforce Email Dev</span>
+            <span>Email Dev</span>
             <span> • </span>
             <span>Frontend Dev</span>
           </div>

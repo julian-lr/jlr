@@ -11,6 +11,23 @@
 
 ## Changelog
 
+### [0.1.4] - 01-07-2025
+- Lifted `currentSection` state to `App.tsx` to unify control between navbar clicks, scroll, and swipe, and synced `Navbar` active state with current section at all times.
+- Integrated all full-page sections (`Home`, `About Me`, `Work Experience`, `Gallery`, etc.) into a centralized map and introduced a custom scroll/snap transition system mimicking fullPage.js behavior (scroll/swipe transitions only at section edges, mobile swipe support, iOS pull-to-refresh prevention).
+- Navbar: fully mobile-first, animated burger menu, SVG theme toggle, divider logic, and active link highlighting (now synced with scroll/swipe/click).
+- Switched primary font to DM Serif Text (locally hosted); removed all Arvo references and assets.
+- Light mode is now default; dark mode is optional and toggled via the navbar. All colors and backgrounds use CSS variables for easy theme switching.
+- Added new `Gallery` page between `Work Experience` and `Education` in both scroll order and navbar, with a fully responsive 3-column grid displaying 5 featured projects (local preview images, h3 titles, short professional descriptions, clear distinction between course projects and personal tools, and deprecated Allnighter v2 marked as such).
+- Created the `WorkExperience` page from scratch, using a narrative style for each role, splitting jobs accurately by position, and displaying jobs in a timeline-like format.
+- Rewrote the About Me page for a more personal and professional tone, with improved vertical alignment and responsive padding for desktop and mobile.
+- Replaced all section headings with semantic `<h2>` (only one `<h1>` used on Home for SPA compliance), switched Gallery card titles to `<h3>`, and applied consistent styles to section titles for accessibility and SEO.
+- All pages always cover 100% width and at least 100vh height; removed root max-width restriction for true full-width layouts.
+- Removed extra spacing between card image, title, and description, and removed default `margin-top` on card `<p>` tags for a tighter layout.
+- Fixed all section backgrounds to use `var(--color-bg)` for full dark mode compatibility, and confirmed all text and elements inherit themed colors from global variables.
+- General code cleanup, comments, and refactoring for maintainability.
+- Fixed all import paths and folder structure issues after attempted refactor.
+- All transitions (scrolling, clicking navbar, swiping) now work seamlessly between all pages, and all scroll bugs (e.g., not being able to scroll back to Home or top of About Me) have been fixed.
+
 ### [0.1.3] - 29-06-2025
 - First push of all the commits (despite being 0.1.3)
 - Adopted Semantic Versioning (SemVer) for all future releases

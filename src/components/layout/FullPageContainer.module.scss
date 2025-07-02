@@ -1,0 +1,34 @@
+.fullPageContainer {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+}
+
+.fullPageWrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  height: 100vh;
+  transition: transform 0.7s cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+.section {
+  width: 100vw;
+  height: 100vh;
+  flex: 0 0 100vh;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background: var(--color-bg);
+  z-index: 1;
+  overflow-y: auto;
+  overscroll-behavior-y: contain;
+}
+
+@media (max-width: 599px) {
+  .section#gallery {
+    height: auto !important;
+    min-height: 100vh;
+  }
+}
