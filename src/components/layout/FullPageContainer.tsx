@@ -3,15 +3,20 @@ import Home from '../../pages/Home/Home';
 import AboutMe from '../../pages/AboutMe/AboutMe';
 import Gallery from '../../pages/Gallery/Gallery';
 import WorkExperience from '../../pages/WorkExperience/WorkExperience';
+import Education from '../../pages/Education/Education';
+import Courses from '../../pages/Courses/Courses';
+import Contact from '../../pages/Contact/Contact';
 import styles from './FullPageContainer.module.scss';
 
-// Map section IDs to components
+// Maps section IDs to their corresponding components
 const sectionComponents: Record<string, React.ReactNode> = {
   home: <Home key="home" />,
   aboutme: <AboutMe key="aboutme" />,
   workexperience: <WorkExperience key="workexperience" />,
   gallery: <Gallery key="gallery" />,
-  // Add more pages here as needed
+  education: <Education key="education" />,
+  courses: <Courses key="courses" />,
+  contact: <Contact key="contact" />,
 };
 
 function clamp(val: number, min: number, max: number) {
@@ -28,7 +33,7 @@ const FullPageContainer: React.FC<FullPageContainerProps> = ({ current, setCurre
   const isTransitioning = useRef(false);
   const sectionRefs = useRef<(HTMLDivElement | null)[]>([]);
 
-  // Handle wheel/scroll
+  // Handles mouse wheel and scroll navigation
   useEffect(() => {
     const handleWheel = (e: WheelEvent) => {
       if (isTransitioning.current) return;
@@ -50,7 +55,7 @@ const FullPageContainer: React.FC<FullPageContainerProps> = ({ current, setCurre
     return () => window.removeEventListener('wheel', handleWheel);
   }, [current, setCurrent, sections.length]);
 
-  // Handle touch events for mobile
+  // Handles touch events for mobile navigation
   useEffect(() => {
     let startY = 0;
     let endY = 0;
@@ -99,7 +104,7 @@ const FullPageContainer: React.FC<FullPageContainerProps> = ({ current, setCurre
     };
   }, [current, setCurrent, sections.length]);
 
-  // Handle keyboard
+  // Handles keyboard navigation
   useEffect(() => {
     const handleKey = (e: KeyboardEvent) => {
       if (isTransitioning.current) return;
@@ -119,11 +124,11 @@ const FullPageContainer: React.FC<FullPageContainerProps> = ({ current, setCurre
     return () => window.removeEventListener('keydown', handleKey);
   }, [current, setCurrent, sections.length]);
 
-  // Allow transition to finish before next scroll
+  // Prevents rapid transitions by enforcing a delay
   useEffect(() => {
     const timeout = setTimeout(() => {
       isTransitioning.current = false;
-    }, 700); // match CSS transition duration
+    }, 700); // matches CSS transition duration
     return () => clearTimeout(timeout);
   }, [current]);
 

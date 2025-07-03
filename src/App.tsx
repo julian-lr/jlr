@@ -3,7 +3,7 @@ import Navbar from './components/layout/Navbar/Navbar'
 import FullPageContainer from './components/layout/FullPageContainer'
 import './App.scss'
 
-// Shared section definitions (order matters)
+// Section definitions for navigation and layout
 const sections = [
   { id: 'home', name: 'Home' },
   { id: 'aboutme', name: 'About me' },

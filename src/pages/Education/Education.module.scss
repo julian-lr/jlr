@@ -3,4 +3,63 @@
 .education {
   width: 100%;
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 140px;
+  padding-bottom: 100px;
+}
+
+.education h2 {
+  margin-top: 0;
+}
+
+.timeline {
+  width: 100%;
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  margin-top: 2rem;
+}
+
+.entry {
+  /* Remove card styling */
+  background: none;
+  border-radius: 0;
+  box-shadow: none;
+  padding: 0 0 1.5rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.entry h3 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.degree {
+  font-size: 1rem;
+  color: var(--text-secondary);
+}
+
+.dates {
+  font-size: 0.95rem;
+  color: var(--text-tertiary);
+}
+
+@media (max-width: 600px) {
+  .timeline {
+    max-width: 100%;
+    padding: 0 0.5rem;
+  }
+  .entry {
+    padding: 0 0 1rem 0;
+  }
+  .education {
+    padding-top: 100px;
+    padding-bottom: 60px;
+  }
 }

@@ -3,4 +3,63 @@
 .courses {
   width: 100%;
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 140px;
+  padding-bottom: 100px;
+}
+
+.courses h2 {
+  margin-top: 0;
+}
+
+.timeline {
+  width: 100%;
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  margin-top: 2rem;
+}
+
+.group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.group strong {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 0.2rem;
+}
+
+.group ul {
+  list-style: disc inside;
+  margin: 0;
+  padding-left: 1.2em;
+}
+
+.group li {
+  font-size: 1rem;
+  margin-bottom: 0.2rem;
+  color: var(--text-primary);
+}
+
+.date {
+  color: var(--text-tertiary);
+  font-size: 0.95em;
+  margin-left: 0.5em;
+}
+
+@media (max-width: 600px) {
+  .timeline {
+    max-width: 100%;
+    padding: 0 0.5rem;
+  }
+  .courses {
+    padding-top: 100px;
+    padding-bottom: 60px;
+  }
 }

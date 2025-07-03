@@ -11,6 +11,14 @@
 
 ## Changelog
 
+### [1.0.0] - 03-07-2025
+- Finalized all code and UI/UX for production-ready release.
+- Contact form now uses FormData for full compatibility with web3forms (fixes email delivery issue).
+- Cleaned up all code comments: removed placeholder/instructional notes, kept only meaningful explanations.
+- Ensured consistent bottom padding and layout for all sections, including Contact and Gallery.
+- Verified all navigation, scroll, and accessibility features work as intended.
+- Project is now complete and ready for deployment.
+
 ### [0.1.4] - 01-07-2025
 - Lifted `currentSection` state to `App.tsx` to unify control between navbar clicks, scroll, and swipe, and synced `Navbar` active state with current section at all times.
 - Integrated all full-page sections (`Home`, `About Me`, `Work Experience`, `Gallery`, etc.) into a centralized map and introduced a custom scroll/snap transition system mimicking fullPage.js behavior (scroll/swipe transitions only at section edges, mobile swipe support, iOS pull-to-refresh prevention).
