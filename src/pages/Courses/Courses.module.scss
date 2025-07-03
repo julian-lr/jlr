@@ -86,11 +86,16 @@
   }
   .courseRow {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     gap: 0.1em;
+    text-align: center;
+  }
+  .courseName {
+    text-align: center;
   }
   .date {
     margin-left: 0;
     margin-top: 0.1em;
+    text-align: center;
   }
 }

@@ -11,6 +11,11 @@
 
 ## Changelog
 
+### [1.0.3] - 03-07-2025
+- Centered course names and dates in the Courses section on mobile for improved readability and visual balance.
+- Added personalized SEO meta tags, Open Graph, and Twitter Card tags for improved discoverability and social sharing.
+- Set meta description, author, robots, canonical URL, and social preview image/title/description for portfolio branding.
+
 ### [1.0.2] - 03-07-2025
 - Updated favicon to a custom SVG logo (JLR) for a unique browser tab icon.
 - Changed the page title in `<head>` to "Julián Laurito Riscica – Portfolio" for a professional appearance.
