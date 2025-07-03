@@ -11,6 +11,10 @@
 
 ## Changelog
 
+### [1.0.2] - 03-07-2025
+- Updated favicon to a custom SVG logo (JLR) for a unique browser tab icon.
+- Changed the page title in `<head>` to "Julián Laurito Riscica – Portfolio" for a professional appearance.
+
 ### [1.0.1] - 03-07-2025
 #### Hotfix: Mobile/Cloudflare build, mobile spacing, and Courses layout
 - Added a robust `useIsMobile` React hook for mobile detection and conditional rendering of full-page navigation (desktop) vs. stacked scroll (mobile).
