@@ -28,6 +28,20 @@
 
 
 @media (max-width: 599px) {
+  .fullPageContainer,
+  .fullPageWrapper {
+    width: 100vw;
+    height: auto;
+    min-height: 100vh;
+    overflow: visible;
+  }
+  .section {
+    width: 100vw;
+    height: auto;
+    min-height: 100vh;
+    flex: none;
+    overflow-y: visible;
+  }
   .section#gallery {
     height: auto !important;
     min-height: 100vh;

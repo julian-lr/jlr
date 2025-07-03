@@ -165,3 +165,9 @@ li {
     top: 0;
   }
 }
+
+@media (max-width: 599px) {
+  .role {
+    margin-top: 0 !important;
+  }
+}

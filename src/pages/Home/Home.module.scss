@@ -87,3 +87,9 @@
     height: 120px;
   }
 }
+
+@media (max-width: 599px) {
+  .name {
+    margin-bottom: 0.5rem !important;
+  }
+}

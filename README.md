@@ -11,10 +11,18 @@
 
 ## Changelog
 
+### [1.0.1] - 03-07-2025
+#### Hotfix: Mobile/Cloudflare build, mobile spacing, and Courses layout
+- Added a robust `useIsMobile` React hook for mobile detection and conditional rendering of full-page navigation (desktop) vs. stacked scroll (mobile).
+- Fixed all section title top spacings on mobile for a more compact layout.
+- Ensured all import paths and file/folder names use correct casing for cross-platform (Cloudflare/Linux) compatibility.
+- Verified that all files are present and correctly named in the repo to prevent build errors on case-sensitive systems (e.g., Cloudflare Pages).
+- Refactored the Courses section for a consistent, mobile-friendly layout: course names are always left-aligned, and dates are clearly presented below or to the right depending on screen size.
+
 ### [1.0.0] - 03-07-2025
 - Finalized all code and UI/UX for production-ready release.
 - Contact form now uses FormData for full compatibility with web3forms (fixes email delivery issue).
-- Cleaned up all code comments: removed placeholder/instructional notes, kept only meaningful explanations.
+- Cleaned up all code comments: removed placeholder notes, kept only meaningful explanations.
 - Ensured consistent bottom padding and layout for all sections, including Contact and Gallery.
 - Verified all navigation, scroll, and accessibility features work as intended.
 - Project is now complete and ready for deployment.

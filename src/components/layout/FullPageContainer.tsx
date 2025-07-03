@@ -6,6 +6,7 @@ import WorkExperience from '../../pages/WorkExperience/WorkExperience';
 import Education from '../../pages/Education/Education';
 import Courses from '../../pages/Courses/Courses';
 import Contact from '../../pages/Contact/Contact';
+import { useIsMobile } from './useIsMobile';
 import styles from './FullPageContainer.module.scss';
 
 // Maps section IDs to their corresponding components
@@ -30,11 +31,13 @@ interface FullPageContainerProps {
 }
 
 const FullPageContainer: React.FC<FullPageContainerProps> = ({ current, setCurrent, sections }) => {
+  const isMobile = useIsMobile();
   const isTransitioning = useRef(false);
   const sectionRefs = useRef<(HTMLDivElement | null)[]>([]);
 
-  // Handles mouse wheel and scroll navigation
+  // Only enable navigation handlers on desktop
   useEffect(() => {
+    if (isMobile) return;
     const handleWheel = (e: WheelEvent) => {
       if (isTransitioning.current) return;
       const section = sectionRefs.current[current];
@@ -53,10 +56,10 @@ const FullPageContainer: React.FC<FullPageContainerProps> = ({ current, setCurre
     };
     window.addEventListener('wheel', handleWheel, { passive: false });
     return () => window.removeEventListener('wheel', handleWheel);
-  }, [current, setCurrent, sections.length]);
+  }, [current, setCurrent, sections.length, isMobile]);
 
-  // Handles touch events for mobile navigation
   useEffect(() => {
+    if (isMobile) return;
     let startY = 0;
     let endY = 0;
     let startScroll = 0;
@@ -85,10 +88,11 @@ const FullPageContainer: React.FC<FullPageContainerProps> = ({ current, setCurre
       if (!section || isTransitioning.current) return;
       const atTop = section.scrollTop === 0;
       const atBottom = section.scrollHeight - section.scrollTop === section.clientHeight;
-      if (deltaY > 40 && atTop && startScroll === 0 && current > 0) {
+      const noScroll = section.scrollHeight === section.clientHeight;
+      if (deltaY > 40 && (atTop || noScroll) && startScroll === 0 && current > 0) {
         isTransitioning.current = true;
         setCurrent(clamp(current - 1, 0, sections.length - 1));
-      } else if (deltaY < -40 && atBottom && current < sections.length - 1) {
+      } else if (deltaY < -40 && (atBottom || noScroll) && current < sections.length - 1) {
         isTransitioning.current = true;
         setCurrent(clamp(current + 1, 0, sections.length - 1));
       }
@@ -102,10 +106,10 @@ const FullPageContainer: React.FC<FullPageContainerProps> = ({ current, setCurre
       window.removeEventListener('touchmove', handleTouchMove);
       window.removeEventListener('touchend', handleTouchEnd);
     };
-  }, [current, setCurrent, sections.length]);
+  }, [current, setCurrent, sections.length, isMobile]);
 
-  // Handles keyboard navigation
   useEffect(() => {
+    if (isMobile) return;
     const handleKey = (e: KeyboardEvent) => {
       if (isTransitioning.current) return;
       const section = sectionRefs.current[current];
@@ -122,15 +126,28 @@ const FullPageContainer: React.FC<FullPageContainerProps> = ({ current, setCurre
     };
     window.addEventListener('keydown', handleKey);
     return () => window.removeEventListener('keydown', handleKey);
-  }, [current, setCurrent, sections.length]);
+  }, [current, setCurrent, sections.length, isMobile]);
 
-  // Prevents rapid transitions by enforcing a delay
   useEffect(() => {
+    if (isMobile) return;
     const timeout = setTimeout(() => {
       isTransitioning.current = false;
     }, 700); // matches CSS transition duration
     return () => clearTimeout(timeout);
-  }, [current]);
+  }, [current, isMobile]);
+
+  if (isMobile) {
+    // Stacked layout for mobile: all sections, normal scroll
+    return (
+      <div>
+        {sections.map(section => (
+          <div key={section.id} id={section.id}>
+            {sectionComponents[section.id]}
+          </div>
+        ))}
+      </div>
+    );
+  }
 
   return (
     <div className={styles.fullPageContainer}>

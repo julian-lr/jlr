@@ -90,6 +90,9 @@ h1 {
   .preview {
     height: 120px;
   }
+  .gallery h2 {
+    margin-top: 0 !important;
+  }
 }
 
 @media (max-width: 879px) {
