@@ -35,6 +35,32 @@ function MoonIcon() {
   )
 }
 
+// Utility: focus the first heading in a section by id
+function focusSectionHeading(sectionId: string) {
+  const section = document.getElementById(sectionId);
+  if (section) {
+    // Special case: Home section, focus profile image
+    if (sectionId === 'home') {
+      const profileImg = section.querySelector('img');
+      if (profileImg && typeof (profileImg as HTMLElement).focus === 'function') {
+        (profileImg as HTMLElement).setAttribute('tabindex', '-1');
+        (profileImg as HTMLElement).focus();
+        (profileImg as HTMLElement).scrollIntoView({ behavior: 'smooth', block: 'center' });
+        return;
+      }
+    }
+    // Try to find a heading inside the section
+    const heading = section.querySelector('h2, h1');
+    if (heading && typeof (heading as HTMLElement).focus === 'function') {
+      (heading as HTMLElement).setAttribute('tabindex', '-1');
+      (heading as HTMLElement).focus();
+      (heading as HTMLElement).scrollIntoView({ behavior: 'smooth', block: 'start' });
+    } else {
+      section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }
+}
+
 function Navbar({ current, setCurrent, sections }: NavbarProps) {
   // Track if the mobile menu is open
   const [open, setOpen] = useState(false)
@@ -54,8 +80,14 @@ function Navbar({ current, setCurrent, sections }: NavbarProps) {
 
   // Handle link click: set current section, close mobile menu
   const handleClick = (idx: number) => {
-    setCurrent(idx)
-    setOpen(false)
+    setCurrent(idx);
+    setOpen(false);
+    // On mobile, scroll/focus to section heading
+    if (window.innerWidth <= 599) {
+      setTimeout(() => {
+        focusSectionHeading(sections[idx].id);
+      }, 0);
+    }
   }
 
   // Toggle between light and dark mode

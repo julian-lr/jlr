@@ -26,6 +26,11 @@
   overscroll-behavior-y: contain;
 }
 
+.section h2,
+.section h1 {
+  scroll-margin-top: 90px; /* offset for navbar */
+  outline: none;
+}
 
 @media (max-width: 599px) {
   .fullPageContainer,

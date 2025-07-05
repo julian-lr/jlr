@@ -11,10 +11,12 @@
 
 ## Changelog
 
-### [1.0.3] - 03-07-2025
+### [1.0.3] - 05-07-2025
 - Centered course names and dates in the Courses section on mobile for improved readability and visual balance.
 - Added personalized SEO meta tags, Open Graph, and Twitter Card tags for improved discoverability and social sharing.
 - Set meta description, author, robots, canonical URL, and social preview image/title/description for portfolio branding.
+- Added mobile-only scrollspy: navbar links now highlight based on the section heading (or Home profile image) currently visible on screen.
+- Improved scrollspy logic for reliability and correct section detection as you scroll.
 
 ### [1.0.2] - 03-07-2025
 - Updated favicon to a custom SVG logo (JLR) for a unique browser tab icon.

@@ -141,9 +141,9 @@ const FullPageContainer: React.FC<FullPageContainerProps> = ({ current, setCurre
     return (
       <div>
         {sections.map(section => (
-          <div key={section.id} id={section.id}>
+          <section key={section.id} id={section.id} className={styles.section}>
             {sectionComponents[section.id]}
-          </div>
+          </section>
         ))}
       </div>
     );
