@@ -37,14 +37,21 @@ function Contact() {
   const [submitting, setSubmitting] = useState(false)
   const [success, setSuccess] = useState(false)
   const [fail, setFail] = useState(false)
+  const [responseMessage, setResponseMessage] = useState('')
 
   // Handles input changes and resets error for the field
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setValues({ ...values, [e.target.name]: e.target.value })
     setErrors({ ...errors, [e.target.name]: '' })
+    // Clear previous response messages when user starts typing
+    if (success || fail) {
+      setSuccess(false)
+      setFail(false)
+      setResponseMessage('')
+    }
   }
 
-  // Handles form submission and validation (now using FormData for web3forms)
+  // Handles form submission and validation (using Cloudflare Pages function)
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     const validation = validate(values)
@@ -53,13 +60,13 @@ function Contact() {
     setSubmitting(true)
     setSuccess(false)
     setFail(false)
+    setResponseMessage('')
 
     const formData = new FormData()
     Object.entries(values).forEach(([key, value]) => formData.append(key, value))
-    formData.append('access_key', '9db0364e-5732-4314-b8b3-e86a5eb5db2d')
 
     try {
-      const res = await fetch('https://api.web3forms.com/submit', {
+      const res = await fetch('/api/contact', {
         method: 'POST',
         body: formData
       })
@@ -67,11 +74,14 @@ function Contact() {
       if (data.success) {
         setSuccess(true)
         setValues(initialState)
+        setResponseMessage(data.message || 'Thank you for your message! I\'ll get back to you soon.')
       } else {
         setFail(true)
+        setResponseMessage(data.message || 'Something went wrong. Please try again.')
       }
     } catch {
       setFail(true)
+      setResponseMessage('Network error. Please check your connection and try again.')
     }
     setSubmitting(false)
   }
@@ -94,7 +104,6 @@ function Contact() {
         </a>
       </div>
       <form className={styles.form} onSubmit={handleSubmit} autoComplete="off" noValidate>
-        <input type="hidden" name="access_key" value="9db0364e-5732-4314-b8b3-e86a5eb5db2d" />
         <div className={styles.field}>
           <label htmlFor="name">Name*</label>
           <input id="name" name="name" value={values.name} onChange={handleChange} required autoComplete="name" className={errors.name ? styles.error : ''} />
@@ -119,9 +128,11 @@ function Contact() {
           <textarea id="message" name="message" value={values.message} onChange={handleChange} required rows={5} className={errors.message ? styles.error : ''} />
           {errors.message && <div className={styles.errorMsg}>{errors.message}</div>}
         </div>
-        <button type="submit" disabled={submitting} className={styles.submitBtn}>Submit</button>
-        {success && <div className={styles.successMsg}>Message sent! Thank you.</div>}
-        {fail && <div className={styles.errorMsg}>Something went wrong. Please try again.</div>}
+        <button type="submit" disabled={submitting} className={styles.submitBtn}>
+          {submitting ? 'Sending...' : 'Submit'}
+        </button>
+        {success && <div className={styles.successMsg}>{responseMessage}</div>}
+        {fail && <div className={styles.errorMsg}>{responseMessage}</div>}
       </form>
     </section>
   )

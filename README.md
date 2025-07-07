@@ -11,6 +11,12 @@
 
 ## Changelog
 
+### [1.0.5] - 07-07-2025
+- **Contact Form Migration**: Migrated contact form from web3forms to a native Cloudflare Pages function (`/functions/api/contact.js`) using Resend API for email delivery.
+- **Enhanced Email Handling**: Contact form now sends emails via Resend with proper formatting, reply-to headers, and professional templates.
+- **Improved User Feedback**: Added dynamic response messages from the server, loading states ("Sending..."), and better error handling for network issues.
+- **CORS Support**: Added proper CORS headers to the contact endpoint for cross-origin requests during development.
+
 ### [1.0.4] - 07-07-2025
 - Updated meta descriptions to match the exact opening text from About Me section for better search engine results.
 - Updated all domain references from placeholder to actual domain (julianlr.com) in canonical URL, Open Graph, and Twitter meta tags.
