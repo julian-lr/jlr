@@ -11,6 +11,10 @@
 
 ## Changelog
 
+### [1.0.4] - 07-07-2025
+- Updated meta descriptions to match the exact opening text from About Me section for better search engine results.
+- Updated all domain references from placeholder to actual domain (julianlr.com) in canonical URL, Open Graph, and Twitter meta tags.
+
 ### [1.0.3] - 05-07-2025
 - Centered course names and dates in the Courses section on mobile for improved readability and visual balance.
 - Added personalized SEO meta tags, Open Graph, and Twitter Card tags for improved discoverability and social sharing.
