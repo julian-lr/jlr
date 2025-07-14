@@ -1,12 +1,12 @@
 import React, { useRef, useEffect } from 'react';
 import Home from '../../pages/Home/Home';
 import AboutMe from '../../pages/AboutMe/AboutMe';
-import Gallery from '../../pages/Gallery/Gallery';
+import Projects from '../../pages/Projects/Projects';
 import WorkExperience from '../../pages/WorkExperience/WorkExperience';
 import Education from '../../pages/Education/Education';
 import Courses from '../../pages/Courses/Courses';
 import Contact from '../../pages/Contact/Contact';
-import { useIsMobile } from './useIsMobile';
+import { useIsMobileOrTablet } from './useIsMobileOrTablet';
 import styles from './FullPageContainer.module.scss';
 
 // Maps section IDs to their corresponding components
@@ -14,7 +14,7 @@ const sectionComponents: Record<string, React.ReactNode> = {
   home: <Home key="home" />,
   aboutme: <AboutMe key="aboutme" />,
   workexperience: <WorkExperience key="workexperience" />,
-  gallery: <Gallery key="gallery" />,
+  projects: <Projects key="projects" />,
   education: <Education key="education" />,
   courses: <Courses key="courses" />,
   contact: <Contact key="contact" />,
@@ -31,13 +31,13 @@ interface FullPageContainerProps {
 }
 
 const FullPageContainer: React.FC<FullPageContainerProps> = ({ current, setCurrent, sections }) => {
-  const isMobile = useIsMobile();
+  const isMobileOrTablet = useIsMobileOrTablet();
   const isTransitioning = useRef(false);
   const sectionRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   // Only enable navigation handlers on desktop
   useEffect(() => {
-    if (isMobile) return;
+    if (isMobileOrTablet) return;
     const handleWheel = (e: WheelEvent) => {
       if (isTransitioning.current) return;
       const section = sectionRefs.current[current];
@@ -56,10 +56,10 @@ const FullPageContainer: React.FC<FullPageContainerProps> = ({ current, setCurre
     };
     window.addEventListener('wheel', handleWheel, { passive: false });
     return () => window.removeEventListener('wheel', handleWheel);
-  }, [current, setCurrent, sections.length, isMobile]);
+  }, [current, setCurrent, sections.length, isMobileOrTablet]);
 
   useEffect(() => {
-    if (isMobile) return;
+    if (isMobileOrTablet) return;
     let startY = 0;
     let endY = 0;
     let startScroll = 0;
@@ -106,10 +106,10 @@ const FullPageContainer: React.FC<FullPageContainerProps> = ({ current, setCurre
       window.removeEventListener('touchmove', handleTouchMove);
       window.removeEventListener('touchend', handleTouchEnd);
     };
-  }, [current, setCurrent, sections.length, isMobile]);
+  }, [current, setCurrent, sections.length, isMobileOrTablet]);
 
   useEffect(() => {
-    if (isMobile) return;
+    if (isMobileOrTablet) return;
     const handleKey = (e: KeyboardEvent) => {
       if (isTransitioning.current) return;
       const section = sectionRefs.current[current];
@@ -126,17 +126,26 @@ const FullPageContainer: React.FC<FullPageContainerProps> = ({ current, setCurre
     };
     window.addEventListener('keydown', handleKey);
     return () => window.removeEventListener('keydown', handleKey);
-  }, [current, setCurrent, sections.length, isMobile]);
+  }, [current, setCurrent, sections.length, isMobileOrTablet]);
 
   useEffect(() => {
-    if (isMobile) return;
+    if (isMobileOrTablet) return;
     const timeout = setTimeout(() => {
       isTransitioning.current = false;
     }, 700); // matches CSS transition duration
     return () => clearTimeout(timeout);
-  }, [current, isMobile]);
+  }, [current, isMobileOrTablet]);
 
-  if (isMobile) {
+  // Reset scroll to top when section changes (desktop only)
+  useEffect(() => {
+    if (isMobileOrTablet) return;
+    const section = sectionRefs.current[current];
+    if (section) {
+      section.scrollTop = 0;
+    }
+  }, [current, isMobileOrTablet]);
+
+  if (isMobileOrTablet) {
     // Stacked layout for mobile: all sections, normal scroll
     return (
       <div>

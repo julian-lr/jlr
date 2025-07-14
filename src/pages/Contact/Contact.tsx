@@ -15,19 +15,50 @@ const initialState = {
 const initialErrors = {
   name: '',
   email: '',
+  phone: '',
   subject: '',
   message: '',
 }
 
 // Validates form fields for correct input
 function validate(values: typeof initialState) {
-  const errors: typeof initialErrors = { name: '', email: '', subject: '', message: '' }
-  if (!values.name.trim()) errors.name = 'Name is required.'
-  else if (!/^[A-Za-zÀ-ÿ'\- ]+$/.test(values.name.trim())) errors.name = 'Name must only contain letters.'
-  if (!values.email.trim()) errors.email = 'Email is required.'
-  else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(values.email.trim())) errors.email = 'Invalid email address.'
-  if (!values.subject.trim()) errors.subject = 'Subject is required.'
-  if (!values.message.trim()) errors.message = 'Message is required.'
+  const errors: typeof initialErrors = { name: '', email: '', phone: '', subject: '', message: '' }
+  
+  // Name validation
+  if (!values.name.trim()) {
+    errors.name = 'Name is required.'
+  } else if (values.name.trim().length < 2) {
+    errors.name = 'Name must be at least 2 characters long.'
+  } else if (!/^[A-Za-zÀ-ÿ'\- ]+$/.test(values.name.trim())) {
+    errors.name = 'Name must only contain letters, spaces, hyphens, and apostrophes.'
+  }
+  
+  // Email validation (more strict)
+  if (!values.email.trim()) {
+    errors.email = 'Email is required.'
+  } else if (!/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(values.email.trim())) {
+    errors.email = 'Please enter a valid email address.'
+  }
+  
+  // Subject validation
+  if (!values.subject.trim()) {
+    errors.subject = 'Subject is required.'
+  } else if (values.subject.trim().length < 3) {
+    errors.subject = 'Subject must be at least 3 characters long.'
+  }
+  
+  // Message validation
+  if (!values.message.trim()) {
+    errors.message = 'Message is required.'
+  } else if (values.message.trim().length < 10) {
+    errors.message = 'Message must be at least 10 characters long.'
+  }
+  
+  // Phone validation (optional but if provided should be valid)
+  if (values.phone.trim() && !/^[\+]?[1-9][\d]{0,15}$/.test(values.phone.replace(/[\s\-\(\)]/g, ''))) {
+    errors.phone = 'Please enter a valid phone number.'
+  }
+  
   return errors
 }
 
@@ -116,7 +147,8 @@ function Contact() {
         </div>
         <div className={styles.field}>
           <label htmlFor="phone">Phone</label>
-          <input id="phone" name="phone" value={values.phone} onChange={handleChange} autoComplete="tel" />
+          <input id="phone" name="phone" value={values.phone} onChange={handleChange} autoComplete="tel" className={errors.phone ? styles.error : ''} />
+          {errors.phone && <div className={styles.errorMsg}>{errors.phone}</div>}
         </div>
         <div className={styles.field}>
           <label htmlFor="subject">Subject*</label>

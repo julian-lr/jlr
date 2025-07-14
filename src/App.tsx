@@ -9,7 +9,7 @@ const sections = [
   { id: 'home', name: 'Home' },
   { id: 'aboutme', name: 'About me' },
   { id: 'workexperience', name: 'Work experience' },
-  { id: 'gallery', name: 'Gallery' },
+  { id: 'projects', name: 'Projects' },
   { id: 'education', name: 'Education' },
   { id: 'courses', name: 'Courses' },
   { id: 'contact', name: 'Contact' },
@@ -43,25 +43,32 @@ function App() {
       if (observerRef.current) observerRef.current.disconnect()
       observerRef.current = new window.IntersectionObserver(
         entries => {
-          // Find the entry whose top is closest to the top of the viewport and is intersecting
+          // Find the entry that appears first in the viewport (lowest boundingClientRect.top >= 0)
+          let topMostEntry: IntersectionObserverEntry | null = null
           let minTop = Infinity
-          let idx = 0
+          
           entries.forEach(entry => {
             if (entry.isIntersecting) {
               const rect = entry.boundingClientRect
-              if (rect.top >= 0 && rect.top < minTop) {
+              // Only consider elements that are fully visible from the top
+              if (rect.top >= -50 && rect.top < minTop) {
                 minTop = rect.top
-                const foundIdx = idToElement.findIndex(pair => pair.el === entry.target)
-                if (foundIdx !== -1) idx = foundIdx
+                topMostEntry = entry
               }
             }
           })
-          setCurrentSection(idx)
+          
+          if (topMostEntry) {
+            const foundIdx = idToElement.findIndex(pair => pair.el === topMostEntry!.target)
+            if (foundIdx !== -1) {
+              setCurrentSection(foundIdx)
+            }
+          }
         },
         {
           root: null,
-          rootMargin: '-80px 0px 0px 0px', // offset for navbar
-          threshold: [0, 0.1, 0.3, 0.5, 1.0],
+          rootMargin: '-90px 0px -70% 0px', // navbar offset + ensure title is prominently visible
+          threshold: 0,
         }
       )
       idToElement.forEach(pair => {
