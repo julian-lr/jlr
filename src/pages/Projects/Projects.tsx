@@ -10,21 +10,21 @@ interface Project {
 
 const projects: Project[] = [
   {
-    title: 'Web Development',
+    title: 'Web Development Course Coderhouse',
     technologies: ['HTML5', 'CSS3', 'SCSS', 'Bootstrap', 'Google Fonts'],
     status: ['Completed'],
     url: 'https://github.com/julian-lr/Web-Development-CH-JLR',
     image: '/img/previews/preview-ch-wd.png',
   },
   {
-    title: 'JavaScript',
+    title: 'JavaScript Course Coderhouse',
     technologies: ['JavaScript', 'DOM API', 'Local Storage', 'Fetch API', 'Toastify.js', 'Bootstrap'],
     status: ['Completed'],
     url: 'https://github.com/julian-lr/JavaScript-CH-JLR',
     image: '/img/previews/preview-ch-js.png',
   },
   {
-    title: 'ReactJS',
+    title: 'ReactJS Course Coderhouse',
     technologies: ['React', 'Vite', 'Firebase', 'React Router', 'Context API', 'SweetAlert2'],
     status: ['Completed'],
     url: 'https://github.com/julian-lr/ReactJS-CH-JLR',
@@ -57,35 +57,37 @@ function Projects() {
   return (
     <section className={styles.projects}>
       <h2>Projects</h2>
-      <div className={styles.projectList}>
+      <div className={styles.projectGrid}>
         {projects.map((project, idx) => (
           <a
             key={idx}
             href={project.url}
-            className={styles.projectItem}
+            className={styles.projectCard}
             target="_blank"
             rel="noopener noreferrer"
           >
-            <img
-              src={project.image}
-              alt={project.title + ' preview'}
-              className={styles.preview}
-            />
-            <div className={styles.projectInfo}>
-              <div className={styles.projectHeader}>
-                <h3>{project.title}</h3>
-                <div className={styles.statusTags}>
-                  {project.status.map((statusItem, statusIdx) => (
-                    <span key={statusIdx} className={`${styles.status} ${styles[statusItem.toLowerCase().replace(' ', '')]}`}>
-                      {statusItem}
-                    </span>
-                  ))}
+            <div 
+              className={styles.cardBackground}
+              style={{ backgroundImage: `url(${project.image})` }}
+            >
+              <div className={styles.cardOverlay}>
+                <div className={styles.cardContent}>
+                  <h3 className={styles.projectTitle}>{project.title}</h3>
+                  <div className={styles.projectDetails}>
+                    <div className={styles.statusTags}>
+                      {project.status.map((statusItem, statusIdx) => (
+                        <span key={statusIdx} className={`${styles.status} ${styles[statusItem.toLowerCase().replace(' ', '')]}`}>
+                          {statusItem}
+                        </span>
+                      ))}
+                    </div>
+                    <div className={styles.techTags}>
+                      {project.technologies.map((tech, techIdx) => (
+                        <span key={techIdx} className={styles.tech}>{tech}</span>
+                      ))}
+                    </div>
+                  </div>
                 </div>
-              </div>
-              <div className={styles.techTags}>
-                {project.technologies.map((tech, techIdx) => (
-                  <span key={techIdx} className={styles.tech}>{tech}</span>
-                ))}
               </div>
             </div>
           </a>
